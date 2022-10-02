@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./Weather.css";
 
 export default function Weather() {
   let [city, setCity] = useState("");
@@ -26,11 +27,31 @@ export default function Weather() {
     axios.get(url).then(showWeather);
   }
   let form = (
-    <div className="SearchEngine">
-      <form onSubmit={handleSubmit}>
-        <input type="search" placeholder="Enter a city" onChange={updateCity} />
-        <input type="submit" value="Search" />
-      </form>{" "}
+    <div className="Navbar">
+      <section>
+        <nav className="navbar" id="search-bar">
+          <form className="d-flex" role="search" onSubmit={handleSubmit}>
+            <input
+              className="form-control me-2"
+              type="search"
+              placeholder="Enter your city"
+              aria-label="Search"
+              id="search-form"
+              onChange={updateCity}
+            />
+            <button className="btn btn-outline-warning" type="submit">
+              Search
+            </button>
+            <button
+              className="btn btn-outline-success"
+              id="geolocation-button"
+              type="submit"
+            >
+              Current
+            </button>
+          </form>
+        </nav>
+      </section>
     </div>
   );
 
@@ -52,6 +73,18 @@ export default function Weather() {
       </div>
     );
   } else {
-    return <div className="Weather">{form}</div>;
+    return (
+      <div className="Weather">
+        {form}
+        <ul>
+          <li> </li>
+          <li> Temperature:</li>
+          <li>Description: </li>
+          <li>Humidity: </li>
+          <li> Wind :</li>
+          <li></li>
+        </ul>
+      </div>
+    );
   }
 }

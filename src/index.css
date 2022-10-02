@@ -15,9 +15,7 @@ code {
   font-family: sans-serif;
   text-align: center;
 }
-body {
-  background-color: bisque;
-}
+
 li {
   list-style: none;
   text-transform: capitalize;
